@@ -2,11 +2,12 @@ import java.util.ArrayList;
 
 public class Facade
 {
-    private static int UserType;
     private static Product theSelectProduct;
     private static int nProductCategory;
     private static ArrayList<Product> theProductList;
     private static Person thePerson;
+    ArrayList<UserInfoItem> buyers = new ArrayList<>();
+    ArrayList<UserInfoItem> sellers = new ArrayList<>();
 
     public boolean login()
     {
@@ -45,7 +46,16 @@ public class Facade
 
     public void createUser(UserInfoItem userinfoitem)
     {
+        int userType = userinfoitem.getUsertype();
 
+        if(userType == 0)
+        {
+            buyers.add(userinfoitem);
+        }
+        else
+        {
+            sellers.add(userinfoitem);
+        }
     }
 
     public void createProductList()
@@ -67,6 +77,16 @@ public class Facade
     public void ProductOperation()
     {
 
+    }
+
+    public ArrayList<UserInfoItem> getBuyers()
+    {
+        return buyers;
+    }
+
+    public ArrayList<UserInfoItem> getSellers()
+    {
+        return sellers;
     }
 
 }

@@ -1,5 +1,12 @@
 public class Seller {
 
-    String Username;
-    String Password;
+    public static void showMenu()
+    {
+
+    }
+
+    public ProductMenu CreateProductMenu()
+    {
+        return null;
+    }
 }
