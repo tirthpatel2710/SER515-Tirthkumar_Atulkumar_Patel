@@ -1,6 +1,20 @@
 import java.util.ArrayList;
-public class Person
+public abstract class Person
 {
-    private static ArrayList<Buyer> buyers = new ArrayList<Buyer>();
-    private static ArrayList<Seller> sellers = new ArrayList<Seller>();
+    private ProductMenu theProductMenu;
+    public abstract void showMenu();
+    public void showAddButton(){
+
+    }
+    public void showViewButton(){
+
+    }
+    public void showRadioButton()
+    {
+
+    }
+    public void showLabels(){
+
+    }
+    public abstract void ProductMenuCreateProductMenu();
 }

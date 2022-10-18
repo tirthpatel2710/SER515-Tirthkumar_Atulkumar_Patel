@@ -18,6 +18,7 @@ public class PTBS
             System.out.println("Press 6 to get Produce Menu");
             System.out.println("Press 7 to get Whole Product Menu");
             System.out.println("Press 0 to Exit from the System");
+
             String input = myObj.nextLine();
 
             switch (input) {

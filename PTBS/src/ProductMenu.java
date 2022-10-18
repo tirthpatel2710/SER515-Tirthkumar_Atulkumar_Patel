@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-public class ProductMenu
+public interface ProductMenu
 {
     public static ArrayList<Product> products = new ArrayList<Product>();
 
@@ -35,4 +35,11 @@ public class ProductMenu
     {
         products.add(e);
     }
+
+    public abstract void showAddButton();
+    public abstract void showViewButton();
+    public abstract void showRadioButton();
+    public abstract void showLabels();
+    public abstract void showComboxes();
+
 }
