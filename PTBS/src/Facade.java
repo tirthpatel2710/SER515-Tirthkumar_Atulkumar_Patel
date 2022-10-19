@@ -1,18 +1,49 @@
 import java.util.ArrayList;
+import java.util.*;
 
 public class Facade
 {
-    private static Product theSelectProduct;
-    private static int nProductCategory;
-    private static ArrayList<Product> theProductList;
-    private static Person thePerson;
-    ArrayList<UserInfoItem> buyers = new ArrayList<>();
-    ArrayList<UserInfoItem> sellers = new ArrayList<>();
+    private int UserType;
+    private Product theSelectProduct;
+    private int nProductCategory;
+    private ClassProductList theProductList;
+    private Person thePerson;
 
-    public boolean login()
+    //ArrayList<UserInfoItem> buyers = new ArrayList<>();
+    //ArrayList<UserInfoItem> sellers = new ArrayList<>();
+    Map<String, String> buyers = new HashMap<String, String>();
+    Map<String, String> sellers = new HashMap<String,String>();
+
+
+    public int login(String username, String password)
     {
+        buyers.put("tutu","1111");
+        buyers.put("mimi","2222");
+        buyers.put("nana","3333");
+        sellers.put("pepe","3333");
 
-        return true;
+        if(buyers.containsKey(username))
+        {
+            String value = buyers.get(username);
+
+            if(value.equals(password))
+                return 0;
+            else
+                return -1;
+        }
+        else if(sellers.containsKey(username))
+        {
+            String value = sellers.get(username);
+
+            if(value.equals(password))
+                return 1;
+            else
+                return -1;
+        }
+        else
+        {
+            return -1;
+        }
     }
     public void addTrading()
     {
@@ -50,11 +81,11 @@ public class Facade
 
         if(userType == 0)
         {
-            buyers.add(userinfoitem);
+            buyers.put(userinfoitem.getUsername(), userinfoitem.getPassword());
         }
         else
         {
-            sellers.add(userinfoitem);
+            sellers.put(userinfoitem.getUsername(), userinfoitem.getPassword());
         }
     }
 
@@ -79,7 +110,7 @@ public class Facade
 
     }
 
-    public ArrayList<UserInfoItem> getBuyers()
+    /*public ArrayList<UserInfoItem> getBuyers()
     {
         return buyers;
     }
@@ -87,6 +118,6 @@ public class Facade
     public ArrayList<UserInfoItem> getSellers()
     {
         return sellers;
-    }
+    }*/
 
 }

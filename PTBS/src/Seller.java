@@ -1,19 +1,14 @@
-public class Seller {
-
-    private String Username;
-    private String Password;
-    Seller(String Username, String Password)
+public class Seller extends Person
+{
+    @Override
+    public void showMenu()
     {
-        this.Username = Username;
-        this.Password = Password;
-    }
-    public static void showMenu()
-    {
-
+        System.out.println("Seller Menu");
     }
 
-    public ProductMenu CreateProductMenu()
-    {
+    @Override
+    public ProductMenu CreateProductMenu() {
+
         return null;
     }
 }

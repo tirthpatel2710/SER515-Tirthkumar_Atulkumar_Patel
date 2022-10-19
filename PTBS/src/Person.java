@@ -16,5 +16,5 @@ public abstract class Person
     public void showLabels(){
 
     }
-    public abstract void ProductMenuCreateProductMenu();
+    public abstract ProductMenu CreateProductMenu();
 }

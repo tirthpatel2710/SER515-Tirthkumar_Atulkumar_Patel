@@ -1,5 +1,9 @@
-public class ProduceProductMenu
+public class ProduceProductMenu implements ProductMenu
 {
+    public void showMenu(){
+
+        System.out.println("ProduceProduct Menu has been printed");
+    }
     public void showAddButton(){
 
     }

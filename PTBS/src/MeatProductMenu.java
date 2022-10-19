@@ -1,5 +1,11 @@
-public class MeatProductMenu
+public class MeatProductMenu implements ProductMenu
 {
+    @Override
+    public void showMenu() {
+
+        System.out.println("MeatProduct Menu has been printed");
+    }
+
     public void showAddButton(){
 
     }

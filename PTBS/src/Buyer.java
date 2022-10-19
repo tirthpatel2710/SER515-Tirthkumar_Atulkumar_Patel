@@ -1,19 +1,14 @@
 import java.util.ArrayList;
 
-public class Buyer {
+public class Buyer extends Person{
 
-    private String Username;
-    private String Password;
-    Buyer(String Username, String Password)
+    @Override
+    public void showMenu()
     {
-        this.Username = Username;
-        this.Password = Password;
-    }
-    public static void showMenu()
-    {
-
+        System.out.println("Buyer Menu");
     }
 
+    @Override
     public ProductMenu CreateProductMenu()
     {
         return null;
