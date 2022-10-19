@@ -2,6 +2,12 @@ import java.util.ArrayList;
 
 public class Buyer extends Person{
 
+
+    public Buyer()
+    {
+        super(null);
+
+    }
     @Override
     public void showMenu()
     {

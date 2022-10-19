@@ -1,17 +1,14 @@
-public class ClassProductList extends ArrayList{
-
-    public Product names[] = {new Product("Beef","Meat"), new Product("Fish","Meat"),
-            new Product("Ginger","Produce"), new Product("Tomato","Produce"), };
-    public void accept(NodeVisitor visitor){
-
-    }
+public class OfferingList extends ArrayList
+{
+    public Offering names[] = {new Offering("Beef","Meat"), new Offering("Fish","Meat"),
+            new Offering("Ginger","Produce"), new Offering("Tomato","Produce"), };
 
     public ListIterator getListIterator()
     {
-        return new ProductIterator();
+        return new OfferingIterator();
     }
 
-    public class ProductIterator implements ListIterator{
+    public class OfferingIterator implements ListIterator{
 
         int pos;
 
@@ -22,7 +19,7 @@ public class ClassProductList extends ArrayList{
             }
             return false;
         }
-        public  Product Next(){
+        public  Offering Next(){
 
             if(this.hasNext()){
                 return names[pos++];
@@ -36,4 +33,5 @@ public class ClassProductList extends ArrayList{
 
         }
     }
+
 }

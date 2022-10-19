@@ -2,6 +2,12 @@ import java.util.ArrayList;
 public abstract class Person
 {
     private ProductMenu theProductMenu;
+
+    public Person(ProductMenu theProductMenu)
+    {
+        this.theProductMenu = theProductMenu;
+    }
+
     public abstract void showMenu();
     public void showAddButton(){
 
@@ -17,4 +23,5 @@ public abstract class Person
 
     }
     public abstract ProductMenu CreateProductMenu();
+
 }
