@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Buyer extends Person{
 
 
-    public Buyer()
+    public Buyer(String username, String password)
     {
         super(null);
 

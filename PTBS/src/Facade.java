@@ -8,32 +8,26 @@ public class Facade
     private int nProductCategory;
     private ClassProductList theProductList;
     private Person thePerson;
+    private FileHandling fileHandling;
 
-    //ArrayList<UserInfoItem> buyers = new ArrayList<>();
-    //ArrayList<UserInfoItem> sellers = new ArrayList<>();
-    Map<String, String> buyers = new HashMap<String, String>();
-    Map<String, String> sellers = new HashMap<String,String>();
-
-
+    public Facade(FileHandling fileHandling)
+    {
+        this.fileHandling = fileHandling;
+    }
     public int login(String username, String password)
     {
-        buyers.put("tutu","1111");
-        buyers.put("mimi","2222");
-        buyers.put("nana","3333");
-        sellers.put("pepe","3333");
-
-        if(buyers.containsKey(username))
+        if(fileHandling.getBuyers().containsKey(username))
         {
-            String value = buyers.get(username);
+            String value = fileHandling.getBuyers().get(username);
 
             if(value.equals(password))
                 return 0;
             else
                 return -1;
         }
-        else if(sellers.containsKey(username))
+        else if(fileHandling.getSellers().containsKey(username))
         {
-            String value = sellers.get(username);
+            String value = fileHandling.getSellers().get(username);
 
             if(value.equals(password))
                 return 1;
@@ -81,11 +75,11 @@ public class Facade
 
         if(userType == 0)
         {
-            buyers.put(userinfoitem.getUsername(), userinfoitem.getPassword());
+            fileHandling.getBuyers().put(userinfoitem.getUsername(), userinfoitem.getPassword());
         }
         else
         {
-            sellers.put(userinfoitem.getUsername(), userinfoitem.getPassword());
+            fileHandling.getSellers().put(userinfoitem.getUsername(), userinfoitem.getPassword());
         }
     }
 

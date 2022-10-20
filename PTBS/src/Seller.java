@@ -1,9 +1,13 @@
 public class Seller extends Person
 {
 
-    public Seller()
+    private String Username;
+    private String Password;
+    public Seller(String username, String password)
     {
         super(null);
+        this.Password = password;
+        this.Username = username;
     }
 
     @Override

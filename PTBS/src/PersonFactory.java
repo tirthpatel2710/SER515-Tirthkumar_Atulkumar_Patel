@@ -6,10 +6,10 @@ public class PersonFactory
             return null;
         }
         if (userType.equalsIgnoreCase("BUYER")) {
-            return new Buyer();
+            return new Buyer("tutu","1111");
 
         } else if (userType.equalsIgnoreCase("SELLER")) {
-            return new Seller();
+            return new Seller("pepe","3333");
         }
         return null;
     }
