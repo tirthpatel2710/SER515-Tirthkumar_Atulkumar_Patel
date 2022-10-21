@@ -3,13 +3,15 @@ public class MeatProductMenu implements ProductMenu
     @Override
     public void showMenu() {
 
-        System.out.println("MeatProduct Menu has been printed");
+        for (int i = 0; i < FileHandling.meatproducts.size(); i++) {
+            System.out.println(FileHandling.meatproducts.get(i));
+        }
     }
 
     public void showAddButton(){
 
     }
-    public void showViewButton() {
+    public void showViewButton(){
 
     }
     public void showRadioButton() {

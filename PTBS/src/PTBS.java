@@ -1,5 +1,5 @@
-import java.io.File;
 import java.util.*;
+
 public class PTBS {
     public static void main(String[] args) {
 
@@ -11,39 +11,72 @@ public class PTBS {
 
         fileHandling.fetchBuyers("PTBS/Data/BuyerInfo.txt");
         fileHandling.fetchSellers("PTBS/Data/SellerInfo.txt");
-        classProductList.fetchProducts("PTBS/Data/ProductInfo.txt");
+        fileHandling.fetchProducts("PTBS/Data/ProductInfo.txt");
 
-        System.out.println("Buyers and Sellers data has been uploaded");
+        System.out.println("<---------Buyers and Sellers data has been uploaded------->");
+        /*
+        System.out.println();
+        System.out.println();
+        System.out.println("<-------Buyers List-------->");
         fileHandling.printBuyers();
-
+        System.out.println();
+        System.out.println();
+        System.out.println("<-------Sellers List-------->");
+        fileHandling.printSellers();
+        System.out.println();
+        System.out.println();
+        System.out.println("<--------Product List--------->");
+        fileHandling.printProducts();
+         */
         // Facade Method //
 
-        System.out.println("Enter the Username: ");
-        String username = obj.nextLine();
+        int usertype = 0;
 
-        System.out.println("Enter the Password: ");
-        String password = obj.nextLine();
-
-
-        Facade facade = new Facade(fileHandling);
-        int usertype = facade.login(username, password);
-
-        if (usertype == 0)
+        while(true)
         {
-            System.out.println("I am Buyer");
-        }
-        else if(usertype ==1)
-        {
-            System.out.println("I am Seller");
-        }
-        else
-        {
-            System.out.println("Invalid User");
+            System.out.println("Enter the Username: ");
+            String username = obj.nextLine();
+
+            System.out.println("Enter the Password: ");
+            String password = obj.nextLine();
+
+            Facade facade = new Facade(fileHandling);
+            usertype = facade.login(username, password);
+
+            if (usertype == 0) {
+                System.out.println("You are Buyer");
+                Person buyer = new Buyer(username, password);
+
+                System.out.println("Press 1 for Produce, 2 for Meat: ");
+                String type = obj.nextLine();
+                if(type.equals("1"))
+                {
+                    Person person = PersonFactory.getPerson("BUYER");
+                    person.setTheProductMenu(new ProduceProductMenu());
+                    person.showMenu();
+                }
+                else if(type.equals("2"))
+                {
+                    Person person = PersonFactory.getPerson("BUYER");
+                    person.setTheProductMenu(new MeatProductMenu());
+                    person.showMenu();
+                }
+                break;
+            } else if (usertype == 1) {
+                System.out.println("You are Seller");
+                Person seller = new Seller(username, password);
+                //seller.showMenu();
+                break;
+            } else {
+                System.out.println("Invalid User Credentials");
+                System.out.println("Please Enter credentials again !!");
+                continue;
+            }
         }
 
         // BRIDGE METHOD //
 
-
+        /*
         System.out.println("<-----------Bridge Pattern started---------->");
 
         Person buyer = new Buyer("tutu","1111");
@@ -53,22 +86,26 @@ public class PTBS {
         seller.showMenu();
 
         System.out.println("<-----------Bridge Pattern Finishes--------->");
+        */
 
         // FACTORY METHOD //
 
+        System.out.println();
+        System.out.println();
+        System.out.println();
         System.out.println("<-----------Factory Method Started--------------->");
         ProductMenuFactory productMenuFactory = new ProductMenuFactory();
         ProductMenu productMenu1 = productMenuFactory.getMenu("PRODUCE");
-        productMenu1.showMenu();
+        //productMenu1.showMenu();
 
         ProductMenu productMenu2 = productMenuFactory.getMenu("MEAT");
-        productMenu2.showMenu();
+        //productMenu2.showMenu();
 
         PersonFactory personFactory = new PersonFactory();
-        Person person1 = personFactory.getMenu("BUYER");
-        Person person2 = personFactory.getMenu("SELLER");
-        person1.showMenu();
-        person2.showMenu();
+        Person person1 = personFactory.getPerson("BUYER");
+        Person person2 = personFactory.getPerson("SELLER");
+        //person1.showMenu();
+        //person2.showMenu();
 
         System.out.println("<-----------Factory Method Finish--------------->");
 

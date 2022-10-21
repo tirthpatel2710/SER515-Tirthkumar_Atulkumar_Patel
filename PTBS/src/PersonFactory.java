@@ -1,6 +1,6 @@
 public class PersonFactory
 {
-    public Person getMenu(String userType) {
+    public static Person getPerson(String userType) {
 
         if (userType == null) {
             return null;

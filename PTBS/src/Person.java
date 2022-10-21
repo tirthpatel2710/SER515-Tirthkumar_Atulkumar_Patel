@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 public abstract class Person
 {
-    private ProductMenu theProductMenu;
+    ProductMenu theProductMenu;
 
     public Person(ProductMenu theProductMenu)
     {
@@ -24,4 +24,10 @@ public abstract class Person
     }
     public abstract ProductMenu CreateProductMenu();
 
+    public ProductMenu getTheProductMenu() {
+        return theProductMenu;
+    }
+    public void setTheProductMenu(ProductMenu theProductMenu) {
+        this.theProductMenu = theProductMenu;
+    }
 }
