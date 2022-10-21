@@ -10,6 +10,7 @@ import java.util.*;
 
 public class FileHandling
 {
+        ClassProductList productList = new ClassProductList();
         private Map<String, String> buyers = new HashMap<>();
         private Map<String, String> sellers = new HashMap<>();
         //private static Map<String, String> products = new HashMap<>();
@@ -73,6 +74,9 @@ public class FileHandling
 
                 if(arrProducts[0].equals("Produce"))
                     produceproducts.add(arrProducts[1]);
+
+                Product newProduct = new Product(arrProducts[1], arrProducts[0]);
+                productList.add(newProduct);
             }
 //            System.out.println(produceproducts.size());
             myReader.close();
@@ -119,5 +123,9 @@ public class FileHandling
         {
                 System.out.println(products.get(i).get(0)+" "+products.get(i).get(1));
         }
+    }
+
+    public ClassProductList getProductList() {
+        return productList;
     }
 }

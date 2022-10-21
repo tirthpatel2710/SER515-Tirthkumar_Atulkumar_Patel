@@ -6,31 +6,16 @@ public class PTBS {
         System.out.println("Product Trading and Bidding System");
         Scanner obj = new Scanner(System.in);
 
-        FileHandling fileHandling = new FileHandling();
         ClassProductList classProductList = new ClassProductList();
 
-        fileHandling.fetchBuyers("PTBS/Data/BuyerInfo.txt");
-        fileHandling.fetchSellers("PTBS/Data/SellerInfo.txt");
-        fileHandling.fetchProducts("PTBS/Data/ProductInfo.txt");
 
         System.out.println("<---------Buyers and Sellers data has been uploaded------->");
-        /*
-        System.out.println();
-        System.out.println();
-        System.out.println("<-------Buyers List-------->");
-        fileHandling.printBuyers();
-        System.out.println();
-        System.out.println();
-        System.out.println("<-------Sellers List-------->");
-        fileHandling.printSellers();
-        System.out.println();
-        System.out.println();
-        System.out.println("<--------Product List--------->");
-        fileHandling.printProducts();
-         */
+
         // Facade Method //
 
+        System.out.println("<--------------Facade Pattern & Bridge Pattern has been implemented here-------->");
         int usertype = 0;
+        Facade facade = new Facade();
 
         while(true)
         {
@@ -40,7 +25,6 @@ public class PTBS {
             System.out.println("Enter the Password: ");
             String password = obj.nextLine();
 
-            Facade facade = new Facade(fileHandling);
             usertype = facade.login(username, password);
 
             if (usertype == 0) {
@@ -65,7 +49,6 @@ public class PTBS {
             } else if (usertype == 1) {
                 System.out.println("You are Seller");
                 Person seller = new Seller(username, password);
-                //seller.showMenu();
                 break;
             } else {
                 System.out.println("Invalid User Credentials");
@@ -74,50 +57,53 @@ public class PTBS {
             }
         }
 
-        // BRIDGE METHOD //
+        System.out.println("<--------------Facade Pattern & Bridge Pattern ends here-------->");
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
+
+        System.out.println("<-----------Factory Method Started--------------->");
 
         /*
-        System.out.println("<-----------Bridge Pattern started---------->");
-
-        Person buyer = new Buyer("tutu","1111");
-        Person seller = new Seller("pepe", "3333");
-
-        buyer.showMenu();
-        seller.showMenu();
-
-        System.out.println("<-----------Bridge Pattern Finishes--------->");
-        */
-
-        // FACTORY METHOD //
-
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println("<-----------Factory Method Started--------------->");
         ProductMenuFactory productMenuFactory = new ProductMenuFactory();
+        productMenuFactory.setTheProductMenu(new ProduceProductMenu());
         ProductMenu productMenu1 = productMenuFactory.getMenu("PRODUCE");
-        //productMenu1.showMenu();
+        productMenu1.showMenu();
 
         ProductMenu productMenu2 = productMenuFactory.getMenu("MEAT");
-        //productMenu2.showMenu();
+        productMenu2.showMenu();
 
         PersonFactory personFactory = new PersonFactory();
         Person person1 = personFactory.getPerson("BUYER");
         Person person2 = personFactory.getPerson("SELLER");
-        //person1.showMenu();
-        //person2.showMenu();
+        person1.showMenu();
+        person2.showMenu();
+        */
 
         System.out.println("<-----------Factory Method Finish--------------->");
 
+
         // ITERATOR METHOD //
 
-        System.out.println("<-----------Iterator Method Begins---------->");
+        System.out.println("<----------Iterator Pattern Demonstration---------->");
 
-        for (ListIterator i = classProductList.getListIterator(); i.hasNext(); ) {
-            Product name = (Product) i.Next();
-            System.out.println("Product Name : " + name.getProductName()+ "   Product Type :" + name.getProductType());
+        ClassProductList productList;
+        ProductIterator productIterator = new ProductIterator(facade.fileHandling.productList);
+
+        while(productIterator.hasNext())
+        {
+            Product p = productIterator.Next();
+            System.out.println(p.getProductType()+" "+ p.getProductName());
         }
 
-        System.out.println("<-------------Iterator Method Ends------------>");
+        System.out.println("<------------Iterator Pattern ends------------>");
+        System.out.println("<------------Visitor Pattern begins------------>");
+
+        ReminderVisitor reminderVisitor = new ReminderVisitor();
+        reminderVisitor.visitFacade(new Facade());
+
+        System.out.println("<------------Visitor Pattern ends------------>");
+
     }
 }

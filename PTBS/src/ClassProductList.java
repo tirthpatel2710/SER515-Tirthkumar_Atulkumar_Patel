@@ -1,16 +1,10 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
-public class ClassProductList extends ArrayList{
+public class ClassProductList extends ArrayList<Product> {
 
-    public Product names[] = {new Product("Beef","Meat"), new Product("Fish","Meat"),
-            new Product("Ginger","Produce"), new Product("Tomato","Produce"), };
-
-    private Map<String,String> products = new HashMap<>();
-    public void fetchProducts(String s)
+    /*(public void fetchProducts(String s)
     {
         try {
             File myObj = new File(s);
@@ -25,41 +19,17 @@ public class ClassProductList extends ArrayList{
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-    }
+    }*/
 
 
     public void accept(NodeVisitor visitor){
 
     }
 
-    public ListIterator getListIterator()
+    /*public ListIterator getListIterator()
     {
         return new ProductIterator();
-    }
+    }*/
 
-    public class ProductIterator implements ListIterator{
 
-        int pos;
-
-        public  boolean hasNext(){
-
-            if(pos < names.length){
-                return true;
-            }
-            return false;
-        }
-        public  Product Next(){
-
-            if(this.hasNext()){
-                return names[pos++];
-            }
-            return null;
-        }
-        public  void MoveToHead(){
-
-        }
-        public  void Remove(){
-
-        }
-    }
 }

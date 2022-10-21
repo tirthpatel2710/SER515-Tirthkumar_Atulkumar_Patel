@@ -7,7 +7,7 @@ public class ProduceProductMenu implements ProductMenu
 {
     public void showMenu(){
 
-        System.out.println(FileHandling.produceproducts.size());
+        //System.out.println(FileHandling.produceproducts.size());
         for(int i=0;i< FileHandling.produceproducts.size();i++)
         {
             System.out.println(FileHandling.produceproducts.get(i));

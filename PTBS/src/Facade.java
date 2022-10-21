@@ -8,10 +8,13 @@ public class Facade
     private int nProductCategory;
     private ClassProductList theProductList;
     private Person thePerson;
-    private FileHandling fileHandling;
+    public FileHandling fileHandling;
 
-    public Facade(FileHandling fileHandling)
-    {
+    public Facade(){
+        FileHandling fileHandling = new FileHandling();
+        fileHandling.fetchBuyers("PTBS/Data/BuyerInfo.txt");
+        fileHandling.fetchSellers("PTBS/Data/SellerInfo.txt");
+        fileHandling.fetchProducts("PTBS/Data/ProductInfo.txt");
         this.fileHandling = fileHandling;
     }
     public int login(String username, String password)
